@@ -9,10 +9,9 @@
 
 
 <dom-module id="app-shell">
-  
   <template>
     <style>
-      .userLoged {  
+      .userLoged {
         font-family: sans-serif;
       }
       :host {
@@ -40,8 +39,8 @@
     <iron-pages selected="[[data.page]]" attr-for-selected="page" fallback-selection="Login" >
       <section page="Login">
         <template is="dom-if" if="[[showLogin]]">
-          <login-component  
-            side={{side}} 
+          <login-component
+            side={{side}}
             on-login="redirectSide"
             dark-users="[[darkUsers]]"
             light-users="[[lightUsers]]"
@@ -58,18 +57,12 @@
       <section  page="LightSide">
          <template is="dom-if" if="[[showIndexLight]]">
           <personaje-card-component side="[[side]]" list-people="[[listPeopleL.results]]" ></personaje-card-component>
-        </template>    
+        </template>
       </section>
     </iron-pages>
 
-         <template is="dom-if" if="[[showIndexDark]]">
-            <personaje-card-component side="[[side]]" list-people="[[listPeopleL.results]]" ></personaje-card-component>
-          </template>
 
-         <template is="dom-if" if="[[showIndexLight]]">
-          <personaje-card-component side="[[side]]" list-people="[[listPeopleL.results]]" ></personaje-card-component>
-        </template>    
-  
+
 
    <iron-ajax id="ironAjax"
       auto
@@ -124,7 +117,7 @@
               ]
             },
 
-            
+
             side: {
               type: String,
               value: "Light"
@@ -136,21 +129,26 @@
             },
             showLogin:{
               type: Boolean,
-              value: true 
+              value: true
             },
             showIndexDark:{
               type: Boolean,
-              value: false 
+              value: false
             },
             showIndexLight:{
               type: Boolean,
-              value: false 
+              value: false
             },
-            
+
 
           }
         }
 
+
+        connectedCallback(){
+          super.connectedCallback();
+          console.log(this.route);
+        }
        //add new image Method
         _addPet() {
           return 0;
@@ -175,11 +173,11 @@
             this.set('showIndexLight', true);
             this.set('side', "Light");
             //window.location.replace ("/LightSide");
-            //this.set('route', '/LightSide/');
+            this.set('route.path', '/LightSide/');
           }else{
             this.set('showIndexDark', true);
             this.set('side', 'Dark');
-            //this.set('route', '/DarkSide');
+            this.set('route.path', '/DarkSide');
             //window.location.replace ("/DarkSide");
           }
           console.log("logueado" + this.side);

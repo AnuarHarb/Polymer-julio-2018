@@ -45,15 +45,17 @@
         });
         myView._testEvent();
       });
-      // test('timeout should return Anuar Harb', (done) => {
-      //   function getResult() {
-      //     const result = myView._timeTest();
-      //     return result;
-      //     done();
-      //   }
-      //   const result = getResult();
-      //   assert.equal(result, 'AnuarHarb');
-      // })
+      test('timeout should return Anuar Harb', (done) => {
+        result = myView._timeTest();
+        function getResult() {
+          setTimeout(() =>{
+            const result = 'Oscar Perez';
+            assert.equal(result, 'Oscar Perez');
+            done();
+          }, 2000)
+        }
+        getResult();
+      })
     })
   </script>
 
