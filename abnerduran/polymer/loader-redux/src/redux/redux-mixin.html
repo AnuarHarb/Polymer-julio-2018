@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer-redux/polymer-redux.html">
+
+<script>
+	const initialState = {
+		messages: [
+			{text: 'Loader not initialized'}
+		],
+	};
+
+	const reducer = (state, action) => {
+		if (!state) {
+			console.log('!state');
+			messages = initialState.messages[0].text;
+		}
+
+		console.log('Redux action: ', action);
+		switch (action.type) {
+			case 'START_LOADER':
+				messages = action.message.text;
+				break;
+			case 'FINISH_LOADER':
+				messages = action.message.text;
+				break;
+		}
+		return Object.assign({}, state, {messages: messages});
+	};
+	
+	// Create a Redux store
+	const store = Redux.createStore(reducer);
+	// eslint-disable-next-line no-unused-vars
+	const ReduxMixin = PolymerRedux(store);
+</script>
