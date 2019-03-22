@@ -1,23 +1,24 @@
 'use strict';
 
-// let dog = {
-//   sound: "woof",
-//   talk: function() {
-//     console.log(this.sound);
-//   }
-// }
+let dog = {
+  sound: "woof",
+  talk: function() {
+    console.log(this.sound);
+  }
+}
 // let cat = {
 //     sound: "miau"
 // }
+
 // dog.talk();
 // let talkFunction = dog.talk;
 // let bindFunction = talkFunction.bind(cat);
 // bindFunction();
 //
-// let talk = function() {
-//   console.log(this.name, this.sound);
-// }
-//
+let talk = function() {
+  console.log(this.name, this.sound);
+}
+
 // let krilin = {
 //   name: "krilin",
 //   sound: "Gokuuuuu!",
@@ -69,19 +70,19 @@
 //
 //
 // // new
-// function spawn(constructor) {
-//   let obj = {};
-//   Object.setPrototypeOf(obj, constructor);
-//   return constructor.apply(obj, arguments);
-// }
+function spawn(constructor) {
+  let obj = {};
+  Object.setPrototypeOf(obj, constructor);
+  return constructor.apply(obj, arguments);
+}
 
 //
 //
 //
-// let dog = { raza: "labrador" }
-// let myDog = { name: " Croqueta" }
-//
-// Object.setPrototypeOf(myDog, dog);
+let dog = { raza: "labrador" }
+let myDog = { name: " Croqueta" }
+
+Object.setPrototypeOf(myDog, dog);
 
 
 //
@@ -99,14 +100,30 @@
 
 
 
-  class Persona {
-    constructor(name) {
-      this.name = name;
-    }
-
-    sayName() {
-      console.log(this.name);
-    }
+class Persona {
+  constructor(name) {
+    this.name = name;
   }
-  const person = new Persona('Diego');
-  person.sayName();
+
+  sayName() {
+    console.log(this.name);
+  }
+}
+
+class Sayayin {
+  constructor(name, nivelDePelea, cola){
+    this.name = name;
+    this.nivelDePelea = nivelDePelea;
+    this.cola = cola;
+  }
+
+  goSuper() {
+    console.log(`${this.name} se convierte en super sayayin, y ahora tiene un nivel de pelea de ${this.nivelDePelea *5}`)
+  }
+}
+
+const gohan = new Sayayin('Gohan', 600, true);
+
+
+const person = new Persona('Diego');
+person.sayName();
